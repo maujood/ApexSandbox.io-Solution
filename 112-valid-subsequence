@@ -1,0 +1,15 @@
+public Boolean isSubSequence(String s1, String s2){
+    List<Integer> c1 = s1.getChars();
+    List<Integer> c2 = s2.getChars();
+
+    Integer j=0;
+    for (Integer i=0; i<c1.size(); i++) {
+        if (j >= c2.size()) return false;
+        while (c2[j] != c1[i]) {
+            j++;
+            if (j >= c2.size()) return false;
+        }
+        j++;
+    }
+    return true;
+}
