@@ -1,0 +1,39 @@
+public Boolean isValid(String s){
+    Stack st = new Stack();
+    List<String> sArr = s.split('');
+    Set<String> opening = new Set<String> {'(', '{', '['};
+    Map<String, String> closingMap = new Map<String, String> {
+        '(' => ')',
+        '{' => '}',
+        '[' => ']'
+    };
+
+    for (String ch : sArr) {
+        if (opening.contains(ch)) {
+            st.push(ch);
+        }
+        else if (ch != closingMap.get(st.pop())) return false;
+    }
+    return st.size() == 0;
+}
+
+class Stack {
+    private List<String> lst = new List<String>();
+    private Integer head = -1;
+
+    public String pop() {
+        if (head >= 0) {
+            return lst.remove(head--);
+        }
+        return null;
+    }
+
+    public void push(String s) {
+        lst.add(s);
+        head++;
+    }
+
+    public Integer size() {
+        return head + 1;
+    }
+}
