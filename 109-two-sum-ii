@@ -1,0 +1,25 @@
+public List<Integer> twoSum(List<Integer> nums, Integer target){
+    Integer pt1 = 0;
+    Integer pt2 = nums.size() - 1;
+
+    while (pt1 < pt2) {
+        Integer neededForPt1 = target - nums[pt1];
+        if (nums[pt2] > neededForPt1) {
+            pt2--;
+            continue;
+        }
+        else if (nums[pt2] == neededForPt1) {
+            return new List<Integer> { pt1, pt2 };
+        }
+        
+        Integer neededForPt2 = target - nums[pt2];
+        if (nums[pt1] < neededForPt2) {
+            pt1++;
+            continue;
+        }
+        else if (nums[pt1] == neededForPt2) {
+            return new List<Integer> {pt1, pt2};
+        }
+    }
+    return null;
+}
