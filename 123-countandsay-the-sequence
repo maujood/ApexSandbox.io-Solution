@@ -1,0 +1,22 @@
+public string countAndSay(integer N) {
+    if (N == 1) return '1';
+    else {
+        String str = CountAndSay(N - 1);
+        List<Integer> numbers = str.getChars();
+        List<Integer> charsToReturn = new List<Integer>();
+        Integer count = 1;
+        Integer currentChar = numbers[0];
+        for (Integer i=1; i<numbers.size(); i++) {
+            if (numbers[i] != currentChar) {
+                charsToReturn.add(count + 48);
+                charsToReturn.add(currentChar);
+                currentChar = numbers[i];
+                count = 1;
+            }
+            else count++;
+        }
+        charsToReturn.add(count + 48);
+        charsToReturn.add(currentChar);
+        return String.fromCharArray(charsToReturn);
+   }
+}
