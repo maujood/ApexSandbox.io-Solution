@@ -1,0 +1,18 @@
+public Integer maxProfit(List<Integer> prices){
+    Integer profitSoFar = 0;
+    Integer lowIndex = 0;
+    
+    for (Integer i=0; i<prices.size(); i++) {
+        if (prices[i] < prices[lowIndex]) {
+            lowIndex = i;
+        }
+        else if (prices[i] > prices[lowIndex]) {
+            Integer profit = prices[i] - prices[lowIndex];
+            if (profit > profitSoFar) {
+                profitSoFar = profit;
+            }
+        }
+    }
+
+    return profitSoFar;
+}
