@@ -1,0 +1,24 @@
+public static String reverseWords(String str){
+    List<Integer> chars = str.getChars();
+
+    Integer left = 0;
+    Integer right = 1;
+    for (; right < chars.size(); right++) {
+        if (chars[right] == 32) {
+            reverseIndices(chars, left, right - 1);
+            left = right;
+            while (left < chars.size() && chars[left] == 32) left++;
+            right = left;
+        }
+    }
+    reverseIndices(chars, left, right - 1);
+    return String.fromCharArray(chars);
+}
+
+private void reverseIndices(List<Integer> chars, Integer left, Integer right) {
+    while (left < right) {
+        Integer temp = chars[left];
+        chars[left++] = chars[right];
+        chars[right--] = temp;
+    }
+}
