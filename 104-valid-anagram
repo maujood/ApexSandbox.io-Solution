@@ -1,0 +1,22 @@
+public boolean isAnagram(String s1, String s2) {
+    if (s1 == null || s2 == null || s1.length() != s2.length()) return false;
+    List<Integer> counts1 = new List<Integer>();
+    List<Integer> counts2 = new List<Integer>();
+    for (Integer i=0; i<26; i++) {
+        counts1.add(0);
+        counts2.add(0);
+    }
+
+    List<Integer> chars1 = s1.getChars();
+    List<Integer> chars2 = s2.getChars();
+
+    for (Integer i=0; i<chars1.size(); i++) {
+        counts1[chars1[i] - 97]++;
+        counts2[chars2[i] - 97]++;
+    }
+
+    for (Integer i=0; i<26; i++) {
+        if (counts1[i] != counts2[i]) return false;
+    }
+    return true;
+}
