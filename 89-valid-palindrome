@@ -1,0 +1,34 @@
+public Boolean isPalindrome(String str){
+    List<Integer> chars = str.getChars();
+    Integer pt1 = -1;
+    Integer pt2 = chars.size();
+    while (pt1 <= pt2) {
+        pt1 = advance(chars, pt1, true);
+        pt2 = advance(chars, pt2, false);
+        if (pt1 == chars.size() || pt2 == -1) return true;
+        Integer char1 = chars[pt1];
+        Integer char2 = chars[pt2];
+
+        //lowercase the characters if they're uppercase
+        if (char1 >= 65 && char1 <= 90) char1 += (97 - 65);
+        if (char2 >= 65 && char2 <= 90) char2 += (97 - 65);
+        if (char1 != char2) return false;
+    }
+    return true;
+}
+
+private Integer advance(List<Integer> chars, Integer ptr, Boolean forwards) {
+    Integer add = forwards ? 1 : -1;
+    while (true) {
+        ptr = ptr + add;
+        if (ptr == -1 || ptr == chars.size()) return ptr;
+        Integer ch = chars[ptr];
+        //return if ch is a number
+        if (ch >= 48 && ch <= 57) return ptr;
+        //return if ch is A-Z
+        if (ch >= 65 && ch <= 90) return ptr;
+        //return if ch is a-z
+        if (ch >= 97 && ch <= 122) return ptr;
+    }
+    return null;
+}
