@@ -1,0 +1,10 @@
+public static List<Integer> twoSum(List<Integer> nums, Integer target) {
+    Map<Integer, Integer> winners = new Map<Integer, Integer>();
+    for (Integer i=0; i<nums.size(); i++) {
+        if (winners.containsKey(nums[i])) {
+            return new List<Integer> { winners.get(nums[i]), i }; 
+        }
+        winners.put(target - nums[i], i);
+    }
+    return null;
+}
