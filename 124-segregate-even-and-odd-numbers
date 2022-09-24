@@ -1,0 +1,18 @@
+public static void segregateEvenOdd(List<Integer> numbers){
+    Integer right = numbers.size() - 1;
+    Integer left = 0;
+    while (left < right) {
+        // loop until left pointer is at an odd number
+        while (left < numbers.size() && Math.mod(numbers[left], 2) == 0) left++;
+
+        // loop until right pointer is at an even number
+        while (right > 0 && Math.mod(numbers[right], 2) != 0) right--;
+
+        // swap if left/right haven't crossed
+        if (left < right) {
+            Integer temp = numbers[left];
+            numbers[left] = numbers[right];
+            numbers[right] = temp;
+        }
+    }
+}
