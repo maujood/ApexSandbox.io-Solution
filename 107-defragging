@@ -1,0 +1,24 @@
+public void defragging(Integer[] memory)
+{
+    Integer p0 = 0;
+    Integer p1 = 0;
+
+    // point p0 to next -1
+    while (p0 < memory.size() && memory[p0] != -1) p0++;
+    
+    // if mem already defraged
+    if (p0 == memory.size()) return;
+
+    p1 = p0 + 1;
+
+    // point p1 to filled location AFTER p0
+    while (p1 < memory.size() && memory[p1] == -1) p1++;
+
+    while (p1 < memory.size()) {
+        memory[p0] = memory[p1];
+        memory[p1] = -1;
+        
+        p0++;
+        while (p1 < memory.size() && memory[p1] == -1) p1++;
+    }
+}
