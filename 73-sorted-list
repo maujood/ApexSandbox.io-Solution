@@ -1,0 +1,26 @@
+public boolean isSorted(List<Integer> numbers) {
+    if (numbers.size() < 3) return true;
+
+    for (Integer i=1; i<numbers.size(); i++) {
+        if (numbers[i] != numbers[i-1]) {
+            //we found the first two sorted numbers!
+            if (numbers[i-1] > numbers[i]) {
+                //the two numbers are sorted descending
+                //return false if any subsequent element is sorted ascending
+                i++;
+                for (; i<numbers.size(); i++) {
+                    if (numbers[i-1] < numbers[i]) return false;
+                }
+            }
+            else {
+                //the two numbers are sorted ascending
+                //return false if any subsequent element is sorted descending
+                i++;
+                for (; i<numbers.size(); i++) {
+                    if (numbers[i-1] > numbers[i]) return false;
+                }
+            }
+        }
+    }
+    return true;
+}
