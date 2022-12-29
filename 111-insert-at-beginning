@@ -1,0 +1,17 @@
+public void insertAtStart(String cityName, List<String> cities) {
+    if (cities.size() > 0) {
+        // add last element to end
+        cities.add(cities.get(cities.size() - 1));
+
+        // shift all elements right
+        for (Integer i=cities.size() - 2; i > 0; i--) {
+            cities[i] = cities[i-1];
+        }
+
+        //set first element
+        cities[0] = cityName;
+    }
+    else {
+        cities.add(cityName);
+    }
+}        
