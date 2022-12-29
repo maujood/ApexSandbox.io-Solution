@@ -2,16 +2,17 @@ public static Integer search(List<Opportunity> opportunities, Integer target){
     Integer left = 0; 
     Integer right = opportunities.size() - 1;
     
-    // edge case - last elements target?
-    if (opportunities[left].Amount == target) return left;
-    if (opportunities[right].Amount == target) return right;
-    
-    while (right - left > 1) {
-        Integer ind = left + ((right - left) / 2);
-        if (opportunities[ind].Amount == target) return ind;
-        if (opportunities[ind].Amount < target) left = ind;
-        if (opportunities[ind].Amount > target) right = ind;
+    while (left <= right) {
+        Integer mid = left + (right - left) / 2;
+        if (opportunities[mid].Amount == target) {
+            return mid;
+        }
+        else if (opportunities[mid].Amount > target) {
+            right = mid - 1;
+        }
+        else {
+            left = mid + 1;
+        }
     }
-
     return -1;
 }
