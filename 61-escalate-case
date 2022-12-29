@@ -1,0 +1,7 @@
+public void escalateIfMeetsCriteria(Case a) { 
+    if  (a.Status == 'In Progress' && 
+        (a.Type == 'Mechanical' || a.Type == 'Electrical') && 
+         a.Reason == 'Breakdown') {
+        a.IsEscalated = true;
+    }
+}
