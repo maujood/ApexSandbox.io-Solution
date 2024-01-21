@@ -3,5 +3,5 @@ public Decimal average(List<Decimal> numbers){
     for (Integer i=0; i<numbers.size(); i++) {
         avg += numbers[i];
     }
-    return (avg/numbers.size());
+    return (avg/numbers.size()).setScale(2);
 }
