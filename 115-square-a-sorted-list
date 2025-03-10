@@ -26,8 +26,8 @@ public static List<Integer> squareList(List<Integer> nums){
     if (nums[i] < 0) pve++; else nve--;
 
     for (Integer j=0; j<nums.size(); j++) {
-        if (pve < nums.size() && nve >= 0) {
-            if (Math.abs(nums[nve]) < nums[pve]) {
+        //if (pve < nums.size() && nve >= 0) {
+            if (pve == nums.size() || Math.abs(nums[nve]) < nums[pve]) {
                 squares.add(nums[nve] * nums[nve]);
                 nve--;
             }
@@ -36,14 +36,14 @@ public static List<Integer> squareList(List<Integer> nums){
                 pve++;
             }
         }
-        else if (pve == nums.size()) {
-            squares.add(nums[nve] * nums[nve]);
-            nve--;
-        }
-        else if (nve == -1) {
-            squares.add(nums[pve] * nums[pve]);
-            pve++;
-        }
+        // else if (pve == nums.size()) {
+        //     squares.add(nums[nve] * nums[nve]);
+        //     nve--;
+        // }
+        // else if (nve == -1) {
+        //     squares.add(nums[pve] * nums[pve]);
+        //     pve++;
+        // }
     }
     return squares;
 }
