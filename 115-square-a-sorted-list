@@ -28,20 +28,20 @@ public static List<Integer> squareList(List<Integer> nums){
     for (Integer j=0; j<nums.size(); j++) {
         if (pve < nums.size() && nve >= 0) {
             if (Math.abs(nums[nve]) > nums[pve]) {
-                squares.add(Math.square(nums[nve]));
+                squares.add(nums[nve] * nums[nve]);
                 nve--;
             }
             else {
-                squares.add(Math.square(nums[pve]));
+                squares.add(nums[pve] * nums[pve]);
                 pve++;
             }
         }
         else if (pve == nums.size()) {
-            squares.add(Math.square(nums[nve]));
+            squares.add(nums[nve] * nums[nve]);
             nve--;
         }
         else if (nve == -1) {
-            squares.add(Math.square(nums[pve]));
+            squares.add(nums[pve] * nums[pve]);
             pve++;
         }
     }
