@@ -27,7 +27,7 @@ public static List<Integer> squareList(List<Integer> nums){
 
     for (Integer j=0; j<nums.size(); j++) {
         if (pve < nums.size() && nve >= 0) {
-            if (Math.abs(nums[nve]) > nums[pve]) {
+            if (Math.abs(nums[nve]) < nums[pve]) {
                 squares.add(nums[nve] * nums[nve]);
                 nve--;
             }
