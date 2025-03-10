@@ -1,0 +1,49 @@
+public static List<Integer> squareList(List<Integer> nums){
+    List<Integer> squares = new List<Integer>();
+    if (nums.size() == 0) return squares;
+    Integer i = 0;
+    for (; i<nums.size() && nums[i] < 0; i++);
+
+    // nums only has +ve numbers, we need forward loop
+    if (i == 0) {
+        for (Integer j=0; j<nums.size(); j++) {
+            squares.add(nums[j] * nums[j]);
+        }
+        return squares;
+    }
+
+    // nums only has -ve numbers
+    if (i == nums.size()) {
+        for (Integer j = nums.size() - 1; j >= 0; j--) {
+            squares.add(nums[j] * nums[j]);
+        }
+        return squares;
+    }
+
+    // Use two pointers
+    Integer pve = i;
+    Integer nve = i;
+    if (nums[i] < 0) pve++; else nve--;
+
+    for (Integer j=0; j<nums.size(); j++) {
+        if (pve < nums.size() && nve >= 0) {
+            if (Math.abs(nums[nve]) > nums[pve]) {
+                squares.add(Math.square(nums[nve]));
+                nve--;
+            }
+            else {
+                squares.add(Math.square(nums[pve]));
+                pve++;
+            }
+        }
+        else if (pve == nums.size()) {
+            squares.add(Math.square(nums[nve]));
+            nve--;
+        }
+        else if (nve == -1) {
+            squares.add(Math.square(nums[pve]));
+            pve++;
+        }
+    }
+    return squares;
+}
