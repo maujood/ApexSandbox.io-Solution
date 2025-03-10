@@ -35,7 +35,7 @@ public static List<Integer> squareList(List<Integer> nums){
                 squares.add(nums[pve] * nums[pve]);
                 pve++;
             }
-        }
+        // }
         // else if (pve == nums.size()) {
         //     squares.add(nums[nve] * nums[nve]);
         //     nve--;
