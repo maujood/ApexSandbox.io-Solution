@@ -1,0 +1,14 @@
+public static List<Contact> ContactDeduplicator(List<Contact> contacts) {    
+    List<Contact> dedupedContacts = new List<Contact>();
+    if (contacts == null) return dedupedContacts;
+
+    Set<String> emails = new Set<String>();
+    for (Contact c : contacts) {
+        String emailLowercase = (c.Email ?? '').toLowerCase();
+        if (!emails.contains(emailLowercase)) {
+            emails.add(emailLowercase);
+            dedupedContacts.add(c);
+        }
+    }
+    return dedupedContacts;
+}
